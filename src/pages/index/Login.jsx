@@ -1,4 +1,4 @@
-export default function Login() {
+export default function LoginPage() {
   let inputBoxClass =
     "my-6 self-center w-96 h-10 rounded-lg placeholder:gray-400 pl-4 py-6";
   return (

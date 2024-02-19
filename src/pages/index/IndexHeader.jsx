@@ -1,6 +1,6 @@
-import logo from "../image/flower.jpg";
+import logo from "../../image/flower.jpg";
 
-export default function Header() {
+export default function IndexHeaderPage() {
   return (
     <header className="flex bg-sky-500/20 rounded-lg">
       <img className="w-24 ml-4 mt-4 mr-12 mb-4" src={logo} />
