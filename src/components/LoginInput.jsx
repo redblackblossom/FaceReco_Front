@@ -1,28 +1,22 @@
-import { forwardRef } from "react";
-
-const LoginInput = forwardRef((props, ref) => {
-  const { isInputValid, type, placeholder } = props;
-  let inputcss = "w-96 h-12 pl-4 rounded-lg placeholder:gray-400 ";
-  if (!isInputValid) {
-    inputcss = inputcss + "border-2 border-rose-600 ";
-  }
+export default function LoginInput({
+  type,
+  placeholder,
+  isRequired,
+  minLength,
+  name,
+  children,
+}) {
   return (
-    <div className="self-center w-120 h-20">
+    <div className="self-center w-120 h-24">
       <input
-        className={inputcss}
+        className="w-96 h-12 pl-4 rounded-lg placeholder:gray-400 "
         type={type}
         placeholder={placeholder}
-        ref={ref}
+        required={isRequired}
+        minLength={minLength}
+        name={name}
       />
-      <div>
-        {!isInputValid && (
-          <p className="ml-4 mt-1 text-red-600 bold font-semibold">
-            필수 입력값 입니다
-          </p>
-        )}
-      </div>
+      <div className="flex mt-2">{children}</div>
     </div>
   );
-});
-LoginInput.displayName = "LoginInput";
-export default LoginInput;
+}
