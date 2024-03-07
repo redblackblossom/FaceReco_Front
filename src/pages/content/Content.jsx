@@ -1,10 +1,10 @@
 import ContentHeaderPage from "./ContentHeader";
-import ContentFolderPage from "./ContentFolder";
+import ContentDirectoryPage from "./ContentDirectory";
 export default function ContentPage() {
   return (
     <>
       <ContentHeaderPage />
-      <ContentFolderPage />
+      <ContentDirectoryPage />
     </>
   );
 }

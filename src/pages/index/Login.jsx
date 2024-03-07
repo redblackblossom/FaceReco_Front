@@ -84,7 +84,6 @@ export async function action({ request }) {
       return response;
     }
     if (!response.ok) {
-      console.log("qwe");
       throw json({ message: "Could not autehnticate user." }, { status: 500 });
     }
     if (response.ok) {
