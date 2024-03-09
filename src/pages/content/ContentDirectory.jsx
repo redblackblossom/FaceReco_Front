@@ -21,7 +21,6 @@ export default function ContentDirectoryPage() {
         });
         if (response.ok) {
           const directories = await response.json();
-          console.log(directories);
           setAllDirectories(directories);
           setIsLoading(false);
         }
@@ -51,18 +50,27 @@ export default function ContentDirectoryPage() {
           .filter((folder) => folder.parentFolder === null)
           .map((folder) => {
             return (
-              <>
-                <Folder
-                  depth={0}
-                  folderName={folder.folderName}
-                  folderId={folder.folderId}
-                  folders={folders}
-                  albums={albums}
-                  key={folder.folderId}
-                ></Folder>
-              </>
+              <Folder
+                depth={0}
+                folderName={folder.folderName}
+                folderId={folder.folderId}
+                folders={folders}
+                albums={albums}
+                key={folder.folderId}
+              ></Folder>
             );
           })}
+        {albums
+          .filter((album) => album.ownerFolderId === null)
+          .map((album) => (
+            <Album
+              depth={0}
+              albumName={album.albumName}
+              albumId={album.albumId}
+              ownerFolderId={album.ownerFolderId}
+              key={album.albumId}
+            />
+          ))}
       </div>
     </aside>
   );

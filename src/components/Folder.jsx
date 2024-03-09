@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Album from "./Album";
 
 export default function Folder({
   depth,
@@ -29,19 +30,33 @@ export default function Folder({
           </button>
         </div>
       </div>
-      {isFolderOpen &&
-        folders
-          .filter((folder) => folder.parentFolder === folderId)
-          .map((folder) => (
-            <Folder
-              depth={depth + 1}
-              folderName={folder.folderName}
-              folderId={folder.folderId}
-              folders={folders}
-              albums={albums}
-              key={folder.folderId}
-            />
-          ))}
+      {isFolderOpen && (
+        <>
+          {folders
+            .filter((folder) => folder.parentFolder === folderId)
+            .map((folder) => (
+              <Folder
+                depth={depth + 1}
+                folderName={folder.folderName}
+                folderId={folder.folderId}
+                folders={folders}
+                albums={albums}
+                key={folder.folderId}
+              />
+            ))}
+          {albums
+            .filter((album) => album.ownerFolderId === folderId)
+            .map((album) => (
+              <Album
+                depth={depth + 1}
+                albumName={album.albumName}
+                albumId={album.albumId}
+                ownerFolderId={album.ownerFolderId}
+                key={album.albumId}
+              />
+            ))}
+        </>
+      )}
     </>
   );
 }
